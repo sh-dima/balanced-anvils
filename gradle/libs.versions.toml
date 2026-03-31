@@ -2,14 +2,7 @@
 minecraft = "1.21.11"
 fabric-loader = "0.18.4"
 fabric-api = "0.141.3+1.21.11"
-fabric-kotlin = "1.13.9+kotlin.2.3.10"
 
-kotlin-serialization = "1.10.0"
-
-batik = "1.19"
-
-
-plugin-kotlin = "2.3.10"
 
 plugin-loom = "1.15.3"
 
@@ -17,15 +10,6 @@ plugin-loom = "1.15.3"
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
 fabric-loader = { module = "net.fabricmc:fabric-loader", version.ref = "fabric-loader" }
 fabric-api = { module = "net.fabricmc.fabric-api:fabric-api", version.ref = "fabric-api" }
-fabric-kotlin = { module = "net.fabricmc:fabric-language-kotlin", version.ref = "fabric-kotlin" }
-
-kotlin-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization" }
-
-batik-transcoder = { module = "org.apache.xmlgraphics:batik-transcoder", version.ref = "batik" }
-batik-codec = { module = "org.apache.xmlgraphics:batik-codec", version.ref = "batik" }
 
 [plugins]
-kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "plugin-kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "plugin-kotlin" }
-
 loom = { id = "net.fabricmc.fabric-loom-remap", version.ref = "plugin-loom" }

@@ -1,5 +1,5 @@
 {
-	description = "A template repository for Minecraft Fabric mods.";
+	description = "Makes anvil experience costs make more sense.";
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";

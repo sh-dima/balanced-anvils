@@ -1,23 +1,12 @@
-import org.apache.batik.transcoder.SVGAbstractTranscoder
-import org.apache.batik.transcoder.TranscoderInput
-import org.apache.batik.transcoder.TranscoderOutput
-import org.apache.batik.transcoder.image.PNGTranscoder
 import java.util.jar.Attributes
 
 buildscript {
 	repositories {
 		mavenCentral()
 	}
-
-	dependencies {
-		classpath(libs.batik.transcoder)
-		classpath(libs.batik.codec)
-	}
 }
 
 plugins {
-	alias(libs.plugins.kotlin)
-	alias(libs.plugins.kotlin.serialization)
 	alias(libs.plugins.loom)
 }
 
@@ -31,10 +20,6 @@ dependencies {
 
 	modImplementation(libs.fabric.loader)
 	modImplementation(libs.fabric.api)
-
-	modImplementation(libs.fabric.kotlin)
-
-	implementation(libs.kotlin.serialization)
 }
 
 java {
@@ -43,8 +28,8 @@ java {
 	}
 }
 
-group = "org.example"
-description = "A template repository for Minecraft Fabric mods."
+group = "io.gitlab.shdima"
+description = "Makes anvil experience costs make more sense."
 
 version = ProcessBuilder("git", "describe", "--tags", "--always", "--dirty")
 	.directory(project.projectDir)
@@ -60,48 +45,15 @@ loom {
 	mods {
 		register(project.name) {
 			sourceSet("main")
-			sourceSet("client")
 		}
-	}
-}
-
-val generatedResources: Directory = layout.buildDirectory.dir("generated/resources").get()
-
-sourceSets.main {
-	resources {
-		exclude("assets/${project.name}/icon.svg")
-		srcDir(generatedResources)
 	}
 }
 
 tasks {
-	val generateIcon = register("generateIcon") {
-		val inputFile = file("src/main/resources/assets/${project.name}/icon.svg")
-		val outputFile = generatedResources.file("assets/${project.name}/icon.png").asFile
-
-		inputs.file(inputFile)
-		outputs.file(outputFile)
-
-		doLast {
-			outputFile.parentFile.mkdirs()
-
-			val transcoder = PNGTranscoder()
-
-			transcoder.addTranscodingHint(SVGAbstractTranscoder.KEY_WIDTH, 128F)
-			transcoder.addTranscodingHint(SVGAbstractTranscoder.KEY_HEIGHT, 128F)
-
-			val input = TranscoderInput(inputFile.toURI().toString())
-			val output = TranscoderOutput(outputFile.outputStream())
-
-			transcoder.transcode(input, output)
-		}
-	}
-
 	processResources {
 		inputs.property("version", project.version)
 		inputs.property("minecraft_version", libs.versions.minecraft.get())
 		inputs.property("fabric_version", libs.versions.fabric.loader.get())
-		inputs.property("fabric_kotlin_version", libs.versions.fabric.kotlin.get())
 		inputs.property("fabric_api_version", libs.versions.fabric.api.get())
 		inputs.property("java_version", java.toolchain.languageVersion.get().asInt())
 
@@ -119,15 +71,12 @@ tasks {
 
 					"minecraft_version" to inputs.properties["minecraft_version"],
 					"fabric_version" to inputs.properties["fabric_version"],
-					"fabric_kotlin_version" to inputs.properties["fabric_kotlin_version"],
 					"fabric_api_version" to inputs.properties["fabric_api_version"],
 					"java_version" to inputs.properties["java_version"],
 					"version" to inputs.properties["version"]
 				)
 			)
 		}
-
-		dependsOn(generateIcon)
 	}
 
 	withType<AbstractArchiveTask> {
@@ -165,14 +114,14 @@ tasks {
 
 	withType<Jar> {
 		manifest {
-			attributes[Attributes.Name.IMPLEMENTATION_TITLE.toString()] = "Template Kotlin Project"
+			attributes[Attributes.Name.IMPLEMENTATION_TITLE.toString()] = "Balanced Anvils"
 			attributes[Attributes.Name.IMPLEMENTATION_VERSION.toString()] = project.version
 			attributes[Attributes.Name.IMPLEMENTATION_VENDOR.toString()] = "Дима Ш."
 		}
 	}
 }
 
-listOf(tasks.jar, tasks.kotlinSourcesJar).forEach {
+listOf(tasks.jar).forEach {
 	it {
 		into("META-INF") {
 			from("LICENSE.txt")

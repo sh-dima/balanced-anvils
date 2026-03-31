@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "${name}",
 	"version": "${version}",
-	"name": "Template Minecraft Mod",
+	"name": "Balanced Anvils",
 	"description": "${description}",
 	"authors": [
 		{
@@ -14,31 +14,16 @@
 		}
 	],
 	"contact": {
-		"homepage": "https://gitlab.com/-/p/79330421",
-		"issues": "https://gitlab.com/esoteric-templates/templates/template-minecraft-mod/-/issues",
-		"sources": "https://gitlab.com/-/p/79330421"
+		"homepage": "https://github.com/sh-dima/balanced-anvils",
+		"issues": "https://github.com/sh-dima/balanced-anvils/issues",
+		"sources": "https://github.com/sh-dima/balanced-anvils"
 	},
 	"license": "AGPL-3.0-only",
 	"environment": "*",
-	"entrypoints": {
-		"main": [
-			{
-				"value": "${group}.${name}.TemplateMod",
-				"adapter": "kotlin"
-			}
-		],
-		"client": [
-			{
-				"value": "${group}.${name}.TemplateModClient",
-				"adapter": "kotlin"
-			}
-		]
-	},
 	"depends": {
 		"fabricloader": ">=${fabric_version}",
 		"minecraft": "${minecraft_version}",
 		"java": ">=${java_version}",
-		"fabric-language-kotlin": ">=${fabric_kotlin_version}",
 		"fabric-api": ">=${fabric_api_version}"
 	}
 }
