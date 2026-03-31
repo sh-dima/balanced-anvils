@@ -58,7 +58,9 @@ abstract public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 
 	@Inject(method = "onTakeOutput", at = @At("HEAD"))
 	private void onTakeOutput(PlayerEntity player, ItemStack stack, CallbackInfo ci) {
-		if (anvils$shouldBeFree()) levelCost.set(0);
+		if (anvils$shouldBeFree(stack)) {
+			levelCost.set(0);
+		}
 	}
 
 	@Inject(method = "updateResult", at = @At("TAIL"))
@@ -158,9 +160,23 @@ abstract public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 		}
 	}
 
-	@Redirect(method = {"updateResult"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/Property;get()I"))
+	@Redirect(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/screen/Property;get()I"))
 	private int getItemLevelCost(Property instance) {
 		if (anvils$shouldBeFree()) return 0;
+		return instance.get();
+	}
+
+	@Redirect(
+			method = "getLevelCost",
+			at = @At(
+			value = "INVOKE",
+			target = "Lnet/minecraft/screen/Property;get()I")
+	)
+	private int getLevelCost(Property instance) {
+		if (anvils$shouldBeFree()) {
+			return 0;
+		}
+
 		return instance.get();
 	}
 }
