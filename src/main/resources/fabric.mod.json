@@ -1,0 +1,44 @@
+{
+	"schemaVersion": 1,
+	"id": "${name}",
+	"version": "${version}",
+	"name": "Template Minecraft Mod",
+	"description": "${description}",
+	"authors": [
+		{
+			"name": "Esoteric Enderman",
+			"contact": {
+				"homepage": "https://shdima.gitlab.io/",
+				"email": "dima.o.sh@proton.me"
+			}
+		}
+	],
+	"contact": {
+		"homepage": "https://gitlab.com/-/p/79330421",
+		"issues": "https://gitlab.com/esoteric-templates/templates/template-minecraft-mod/-/issues",
+		"sources": "https://gitlab.com/-/p/79330421"
+	},
+	"license": "AGPL-3.0-only",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "${group}.${name}.TemplateMod",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "${group}.${name}.TemplateModClient",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"depends": {
+		"fabricloader": ">=${fabric_version}",
+		"minecraft": "${minecraft_version}",
+		"java": ">=${java_version}",
+		"fabric-language-kotlin": ">=${fabric_kotlin_version}",
+		"fabric-api": ">=${fabric_api_version}"
+	}
+}
