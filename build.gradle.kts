@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
 	minecraft(libs.minecraft)
-	mappings(loom.officialMojangMappings())
+	mappings("${libs.yarn.get()}:v2")
 
 	modImplementation(libs.fabric.loader)
 	modImplementation(libs.fabric.api)
@@ -62,7 +62,7 @@ tasks {
 
 		inputs.property("description", project.description)
 
-		filesMatching("fabric.mod.json") {
+		filesMatching(listOf("fabric.mod.json", "*.mixins.json")) {
 			expand(
 				mapOf(
 					"name" to inputs.properties["name"],

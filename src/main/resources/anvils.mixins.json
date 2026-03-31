@@ -1,0 +1,6 @@
+{
+	"package": "${group}.${name}.mixins",
+	"mixins": [
+		"AnvilScreenHandlerMixin"
+	]
+}
