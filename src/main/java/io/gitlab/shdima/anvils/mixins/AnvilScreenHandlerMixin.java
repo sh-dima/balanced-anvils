@@ -19,8 +19,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @SuppressWarnings({"unused", "UnusedMixin"})
 @Mixin(AnvilScreenHandler.class)
 abstract public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
-	@Shadow
-	@Final
+
+	@Shadow @Final
 	private Property levelCost;
 
 	@Unique
@@ -49,6 +49,7 @@ abstract public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 		anvils$hasRepairedWithMaterial = false;
 		anvils$hasCombined = false;
 		anvils$hasChangedName = false;
+		anvils$originalRepairCost = 0;
 	}
 
 	@Inject(
