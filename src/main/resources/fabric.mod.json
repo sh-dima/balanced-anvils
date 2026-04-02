@@ -28,6 +28,7 @@
 	"mixins": [
 		"${name}.mixins.json"
 	],
+	"icon": "assets/${name}/logo.png",
 	"license": "AGPL-3.0-only",
 	"environment": "*",
 	"depends": {
