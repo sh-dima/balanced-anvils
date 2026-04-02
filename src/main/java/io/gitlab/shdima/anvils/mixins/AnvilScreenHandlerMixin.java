@@ -5,8 +5,10 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.s2c.play.ScreenHandlerPropertyUpdateS2CPacket;
 import net.minecraft.screen.*;
 import net.minecraft.screen.slot.ForgingSlotsManager;
+import net.minecraft.server.network.ServerPlayerEntity;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -149,6 +151,20 @@ abstract public class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 
 		if (anvils$hasCombined) {
 			levelCost.set(levelCost.get() - 2);
+		}
+	}
+
+	@Inject(
+			method = "updateResult",
+			at = @At("TAIL")
+	)
+	private void sendLevelCostUpdate(CallbackInfo ci) {
+		if (player instanceof ServerPlayerEntity serverPlayer) {
+			serverPlayer.networkHandler.sendPacket(new ScreenHandlerPropertyUpdateS2CPacket(
+					syncId,
+					0,
+					levelCost.get()
+			));
 		}
 	}
 }
