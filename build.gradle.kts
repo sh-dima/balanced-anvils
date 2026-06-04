@@ -16,14 +16,13 @@ repositories {
 
 dependencies {
 	minecraft(libs.minecraft)
-	mappings("${libs.yarn.get()}:v2")
 
-	modImplementation(libs.fabric.loader)
+	implementation(libs.fabric.loader)
 }
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
+		languageVersion = JavaLanguageVersion.of(25)
 	}
 }
 
