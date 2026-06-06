@@ -190,7 +190,7 @@ abstract class AnvilMenuMixin extends ItemCombinerMenu {
 					ordinal = 0
 			)
 	)
-	private int limitLoops(ItemStack addition) {
+	private int limitLoops(@NonNull ItemStack addition) {
 		ItemStack input = inputSlots.getItem(0);
 		int damageValue = input.getDamageValue();
 		int maxDamage = input.getMaxDamage();
