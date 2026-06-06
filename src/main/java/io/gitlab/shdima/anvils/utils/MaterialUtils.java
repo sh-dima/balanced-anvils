@@ -17,7 +17,6 @@ public final class MaterialUtils {
 			Items.IRON_HELMET,
 			Items.GOLDEN_HELMET,
 			Items.DIAMOND_HELMET,
-			Items.NETHERITE_HELMET,
 			Items.TURTLE_HELMET
 	);
 
@@ -27,8 +26,7 @@ public final class MaterialUtils {
 			Items.COPPER_CHESTPLATE,
 			Items.IRON_CHESTPLATE,
 			Items.GOLDEN_CHESTPLATE,
-			Items.DIAMOND_CHESTPLATE,
-			Items.NETHERITE_CHESTPLATE
+			Items.DIAMOND_CHESTPLATE
 	);
 
 	private static final List<Item> LEGGINGS = List.of(
@@ -37,8 +35,7 @@ public final class MaterialUtils {
 			Items.COPPER_LEGGINGS,
 			Items.IRON_LEGGINGS,
 			Items.GOLDEN_LEGGINGS,
-			Items.DIAMOND_LEGGINGS,
-			Items.NETHERITE_LEGGINGS
+			Items.DIAMOND_LEGGINGS
 	);
 
 	private static final List<Item> BOOTS = List.of(
@@ -47,8 +44,7 @@ public final class MaterialUtils {
 			Items.COPPER_BOOTS,
 			Items.IRON_BOOTS,
 			Items.GOLDEN_BOOTS,
-			Items.DIAMOND_BOOTS,
-			Items.NETHERITE_BOOTS
+			Items.DIAMOND_BOOTS
 	);
 
 	private static final List<Item> SWORDS = List.of(
@@ -57,8 +53,7 @@ public final class MaterialUtils {
 			Items.COPPER_SWORD,
 			Items.IRON_SWORD,
 			Items.GOLDEN_SWORD,
-			Items.DIAMOND_SWORD,
-			Items.NETHERITE_SWORD
+			Items.DIAMOND_SWORD
 	);
 
 	private static final List<Item> SPEARS = List.of(
@@ -67,8 +62,7 @@ public final class MaterialUtils {
 			Items.COPPER_SPEAR,
 			Items.IRON_SPEAR,
 			Items.GOLDEN_SPEAR,
-			Items.DIAMOND_SPEAR,
-			Items.NETHERITE_SPEAR
+			Items.DIAMOND_SPEAR
 	);
 
 	private static final List<Item> PICKAXES = List.of(
@@ -77,8 +71,7 @@ public final class MaterialUtils {
 			Items.COPPER_PICKAXE,
 			Items.IRON_PICKAXE,
 			Items.GOLDEN_PICKAXE,
-			Items.DIAMOND_PICKAXE,
-			Items.NETHERITE_PICKAXE
+			Items.DIAMOND_PICKAXE
 	);
 
 	private static final List<Item> AXES = List.of(
@@ -87,8 +80,7 @@ public final class MaterialUtils {
 			Items.COPPER_AXE,
 			Items.IRON_AXE,
 			Items.GOLDEN_AXE,
-			Items.DIAMOND_AXE,
-			Items.NETHERITE_AXE
+			Items.DIAMOND_AXE
 	);
 
 	private static final List<Item> SHOVELS = List.of(
@@ -97,8 +89,7 @@ public final class MaterialUtils {
 			Items.COPPER_SHOVEL,
 			Items.IRON_SHOVEL,
 			Items.GOLDEN_SHOVEL,
-			Items.DIAMOND_SHOVEL,
-			Items.NETHERITE_SHOVEL
+			Items.DIAMOND_SHOVEL
 	);
 
 	private static final List<Item> HOES = List.of(
@@ -107,7 +98,20 @@ public final class MaterialUtils {
 			Items.COPPER_HOE,
 			Items.IRON_HOE,
 			Items.GOLDEN_HOE,
-			Items.DIAMOND_HOE,
+			Items.DIAMOND_HOE
+	);
+
+	private static final List<Item> NETHERITE_ITEMS = List.of(
+			Items.NETHERITE_HELMET,
+			Items.NETHERITE_CHESTPLATE,
+			Items.NETHERITE_LEGGINGS,
+			Items.NETHERITE_BOOTS,
+
+			Items.NETHERITE_SWORD,
+			Items.NETHERITE_SPEAR,
+			Items.NETHERITE_PICKAXE,
+			Items.NETHERITE_AXE,
+			Items.NETHERITE_SHOVEL,
 			Items.NETHERITE_HOE
 	);
 
@@ -152,13 +156,13 @@ public final class MaterialUtils {
 			return 2;
 		}
 
+		if (NETHERITE_ITEMS.contains(item)) {
+			return 1;
+		}
+
 		// Misc. items
 		if (item == Items.SHIELD) {
 			return 6;
-		}
-
-		if (item == Items.TURTLE_HELMET) {
-			return 5;
 		}
 
 		if (item == Items.MACE) {
