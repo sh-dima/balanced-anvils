@@ -119,63 +119,24 @@ public final class MaterialUtils {
 		Item item = itemStack.getItem();
 
 		// Armor
-		if (HELMETS.contains(item)) {
-			return 5;
-		}
-
-		if (CHESTPLATES.contains(item)) {
-			return 8;
-		}
-
-		if (LEGGINGS.contains(item)) {
-			return 7;
-		}
-
-		if (BOOTS.contains(item)) {
-			return 4;
-		}
+		if (HELMETS.contains(item)) return 5;
+		if (CHESTPLATES.contains(item)) return 8;
+		if (LEGGINGS.contains(item)) return 7;
+		if (BOOTS.contains(item)) return 4;
 
 		// Tools / weapons
-		if (SWORDS.contains(item)) {
-			return 2;
-		}
-
-		if (SPEARS.contains(item)) {
-			return 1;
-		}
-
-		if (PICKAXES.contains(item)) {
-			return 3;
-		}
-
-		if (AXES.contains(item)) {
-			return 3;
-		}
-
-		if (SHOVELS.contains(item)) {
-			return 1;
-		}
-
-		if (HOES.contains(item)) {
-			return 2;
-		}
-
-		if (NETHERITE_ITEMS.contains(item)) {
-			return 1;
-		}
+		if (SWORDS.contains(item)) return 2;
+		if (SPEARS.contains(item)) return 1;
+		if (PICKAXES.contains(item)) return 3;
+		if (AXES.contains(item)) return 3;
+		if (SHOVELS.contains(item)) return 1;
+		if (HOES.contains(item)) return 2;
+		if (NETHERITE_ITEMS.contains(item)) return 1;
 
 		// Misc. items
-		if (item == Items.SHIELD) {
-			return 6;
-		}
-
-		if (item == Items.MACE) {
-			return 1;
-		}
-
-		if (item == Items.WOLF_ARMOR) {
-			return 6;
-		}
+		if (item == Items.SHIELD) return 6;
+		if (item == Items.MACE) return 1;
+		if (item == Items.WOLF_ARMOR) return 6;
 
 		return 4; // Default
 	}
