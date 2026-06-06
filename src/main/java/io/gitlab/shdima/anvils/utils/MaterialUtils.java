@@ -131,6 +131,7 @@ public final class MaterialUtils {
 		if (AXES.contains(item)) return 3;
 		if (SHOVELS.contains(item)) return 1;
 		if (HOES.contains(item)) return 2;
+
 		if (NETHERITE_ITEMS.contains(item)) return 1;
 
 		// Misc. items
