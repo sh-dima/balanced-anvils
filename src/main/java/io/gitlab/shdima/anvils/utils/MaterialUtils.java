@@ -140,6 +140,10 @@ public final class MaterialUtils {
 			return 2;
 		}
 
+		if (SPEARS.contains(item)) {
+			return 1;
+		}
+
 		if (PICKAXES.contains(item)) {
 			return 3;
 		}
