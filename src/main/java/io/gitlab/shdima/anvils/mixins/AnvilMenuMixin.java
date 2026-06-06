@@ -1,5 +1,6 @@
 package io.gitlab.shdima.anvils.mixins;
 
+import io.gitlab.shdima.anvils.utils.MaterialUtils;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.protocol.game.ClientboundContainerSetDataPacket;
@@ -167,5 +168,65 @@ abstract class AnvilMenuMixin extends ItemCombinerMenu {
 					cost.get()
 			));
 		}
+	}
+
+	@Redirect(
+			method = "createResult",
+			at = @At(
+					value = "INVOKE",
+					target = "Ljava/lang/Math;min(II)I",
+					ordinal = 1
+			)
+	)
+	private int keepLooping(int resultMaxDamage, int repairIncrement) {
+		return 1;
+	}
+
+	@Redirect(
+			method = "createResult",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/world/item/ItemStack;getCount()I",
+					ordinal = 0
+			)
+	)
+	private int limitLoops(ItemStack addition) {
+		ItemStack input = inputSlots.getItem(0);
+		int damageValue = input.getDamageValue();
+		int maxDamage = input.getMaxDamage();
+		int materialCost = MaterialUtils.getMaterialCost(input);
+
+		//  (damageValue * materialCost) / maxDamage
+		// = materialCost * (damageValue / maxDamage)
+		int maxLoops = Math.ceilDiv(damageValue * materialCost, maxDamage);
+
+		return Math.min(maxLoops, addition.getCount());
+	}
+
+	@Redirect(
+			method = "createResult",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/world/item/ItemStack;setDamageValue(I)V",
+					ordinal = 0
+		)
+	)
+	private void setDamageValue(@NonNull ItemStack result, int value) {
+		ItemStack input = inputSlots.getItem(0);
+
+		int inputDamage = input.getDamageValue();
+		int resultDamage = result.getDamageValue();
+
+		if (inputDamage != resultDamage) return; // Run ItemStack#setDamageValue only once.
+
+		ItemStack addition = inputSlots.getItem(1);
+		float count = (float) addition.count();
+
+		int materialCost = MaterialUtils.getMaterialCost(result);
+
+		float repairFraction = count / materialCost;
+		int repair = Math.min(resultDamage, (int) (repairFraction * result.getMaxDamage()));
+
+		result.setDamageValue(resultDamage - repair);
 	}
 }
