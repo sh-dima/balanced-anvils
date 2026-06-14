@@ -194,7 +194,7 @@ abstract class AnvilMenuMixin extends ItemCombinerMenu {
 		ItemStack input = inputSlots.getItem(0);
 		int damageValue = input.getDamageValue();
 		int maxDamage = input.getMaxDamage();
-		int materialCost = MaterialUtils.getMaterialCost(input);
+		int materialCost = Math.max(MaterialUtils.getMaterialCost(input) - 1, 1);
 
 		//  (damageValue * materialCost) / maxDamage
 		// = materialCost * (damageValue / maxDamage)
@@ -222,7 +222,7 @@ abstract class AnvilMenuMixin extends ItemCombinerMenu {
 		ItemStack addition = inputSlots.getItem(1);
 		float count = (float) addition.count();
 
-		int materialCost = MaterialUtils.getMaterialCost(result);
+		int materialCost = Math.max(MaterialUtils.getMaterialCost(input) - 1, 1);
 
 		float repairFraction = count / materialCost;
 		int repair = Math.min(resultDamage, (int) (repairFraction * result.getMaxDamage()));
