@@ -1,0 +1,2 @@
+# Exclude Nix from language statistics
+flake.nix linguist-detectable=false
