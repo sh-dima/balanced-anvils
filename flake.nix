@@ -1,5 +1,5 @@
 {
-	description = "Makes anvil experience costs make more sense.";
+	description = "Minecraft mod that makes anvil experience costs make more sense";
 
 	inputs = {
 		nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
