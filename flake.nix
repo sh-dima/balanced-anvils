@@ -27,6 +27,7 @@
 						LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [
 							libGL
 							glfw3-minecraft
+							vulkan-loader
 							libpulseaudio
 							flite
 							udev
