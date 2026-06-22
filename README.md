@@ -1,7 +1,9 @@
 Balanced Anvils
 ===============
 
-Makes anvil penalties (experience cost, anvil usage increase) of certain anvil interactions more balanced.
+Minecraft Fabric mod that makes anvil costs make more sense
+
+This mod aims to make anvil penalties (experience cost, material cost, and anvil usage increase) of certain anvil interactions more balanced.
 
 Balanced Anvils is fully functional as a server-side mod, but can be installed on the client and used in singleplayer too.
 

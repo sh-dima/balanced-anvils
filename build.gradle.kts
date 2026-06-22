@@ -27,7 +27,7 @@ java {
 }
 
 group = "io.gitlab.shdima"
-description = "Makes anvil experience costs make more sense."
+description = "Minecraft Fabric mod that makes anvil costs make more sense"
 
 version = ProcessBuilder("git", "describe", "--tags", "--always", "--dirty")
 	.directory(project.projectDir)
@@ -57,7 +57,7 @@ tasks {
 		inputs.property("name", project.name)
 		inputs.property("group", project.group)
 
-		inputs.property("description", project.description)
+		inputs.property("description", "Makes anvil costs make more sense.")
 
 		filesMatching(listOf("fabric.mod.json", "*.mixins.json")) {
 			expand(
