@@ -19,9 +19,9 @@ Recommended Mods/Datapacks
 
 It is recommended that you use this mod alongside the following mods/datapacks for the best experience:
 * [Villager Trade Rebalance][1]
-* [Infinity With Mending][2]
+* [Infinity Mending Bows][2]
 * [Phantoms in the End][3]
 
 [1]: https://minecraft.wiki/w/Villager_Trade_Rebalance (Villager Trade Rebalance – Minecraft Wiki)
-[2]: https://modrinth.com/project/TToG3iVN (Infinity With Mending – Modrinth)
+[2]: https://modrinth.com/project/NLzRxVcC (Infinity Mending Bows – Modrinth)
 [3]: https://modrinth.com/project/r69cUvfV (Phantoms in the End – Modrinth)
