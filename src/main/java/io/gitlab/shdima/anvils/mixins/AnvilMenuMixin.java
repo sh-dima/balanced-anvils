@@ -166,6 +166,8 @@ abstract class AnvilMenuMixin extends ItemCombinerMenu {
 	)
 	private boolean changeRepairItem(@NonNull ItemStack instance, ItemStack repairItem) {
 		if (instance.getItem() == Items.MACE) return repairItem.getItem() == Items.HEAVY_CORE;
+		if (instance.getItem() == Items.SHEARS) return repairItem.getItem() == Items.IRON_INGOT;
+		if (instance.getItem() == Items.BRUSH) return repairItem.getItem() == Items.FEATHER;
 
 		return instance.isValidRepairItem(repairItem);
 	}

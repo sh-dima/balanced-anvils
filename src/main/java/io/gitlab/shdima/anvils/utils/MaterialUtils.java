@@ -138,6 +138,8 @@ public final class MaterialUtils {
 		if (item == Items.SHIELD) return 6;
 		if (item == Items.MACE) return 1;
 		if (item == Items.WOLF_ARMOR) return 6;
+		if (item == Items.SHEARS) return 2;
+		if (item == Items.BRUSH) return 1;
 
 		return 5; // Default, since one is subtracted after
 	}
