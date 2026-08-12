@@ -139,6 +139,6 @@ public final class MaterialUtils {
 		if (item == Items.MACE) return 1;
 		if (item == Items.WOLF_ARMOR) return 6;
 
-		return 4; // Default
+		return 5; // Default, since one is subtracted after
 	}
 }
