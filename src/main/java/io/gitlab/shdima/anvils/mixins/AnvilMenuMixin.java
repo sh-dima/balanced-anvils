@@ -8,6 +8,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
@@ -154,6 +155,19 @@ abstract class AnvilMenuMixin extends ItemCombinerMenu {
 		if (anvils$hasCombined) {
 			cost.set(cost.get() - 2);
 		}
+	}
+
+	@Redirect(
+			method = "createResult",
+			at = @At(
+					value = "INVOKE",
+					target = "Lnet/minecraft/world/item/ItemStack;isValidRepairItem(Lnet/minecraft/world/item/ItemStack;)Z"
+			)
+	)
+	private boolean changeRepairItem(@NonNull ItemStack instance, ItemStack repairItem) {
+		if (instance.getItem() == Items.MACE) return repairItem.getItem() == Items.HEAVY_CORE;
+
+		return instance.isValidRepairItem(repairItem);
 	}
 
 	@Inject(
